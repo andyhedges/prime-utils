@@ -1,6 +1,10 @@
 [package]
-name = "largest-prime-below"   # this becomes the binary name
+name = "prime-utils"  
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+
+[[bin]]
+name = "largest-prime-below"
+path = "src/bin/largest_prime_below.rs"
