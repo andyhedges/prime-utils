@@ -1,6 +1,6 @@
-use std::process;
 use clap::Parser;
 use prime_utils::largest_prime_below;
+use std::process;
 
 #[derive(Parser)]
 #[command(
@@ -13,7 +13,6 @@ struct Cli {
     /// Number to search below
     number: u64,
 }
-
 
 fn main() {
     let cli = Cli::parse();

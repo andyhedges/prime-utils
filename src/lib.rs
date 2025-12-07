@@ -59,15 +59,7 @@ fn is_prime(n: u64) -> bool {
 
     // Deterministic bases for testing all 64 bit integers.
     // Source: research on minimal base sets for 2^64
-    const BASES: [u64; 7] = [
-        2,
-        325,
-        9375,
-        28178,
-        450775,
-        9780504,
-        1795265022,
-    ];
+    const BASES: [u64; 7] = [2, 325, 9375, 28178, 450775, 9780504, 1795265022];
 
     'outer: for &a in &BASES {
         if a % n == 0 {
@@ -168,10 +160,7 @@ mod tests {
     #[test]
     fn largest_prime_below_large() {
         // Not astronomic, but large enough to stress test a bit.
-        // 1_000_000_007 is prime, so the largest prime below 1_000_000_010 is 1_000_000_007.
-        assert_eq!(
-            largest_prime_below(1_000_000_010),
-            Some(1_000_000_009)
-        );
+        // 1_000_000_009 is prime, so the largest prime below 1_000_000_010 is 1_000_000_009.
+        assert_eq!(largest_prime_below(1_000_000_010), Some(1_000_000_009));
     }
 }
