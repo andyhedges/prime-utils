@@ -8,7 +8,6 @@ use std::process;
     about = "Finds the largest prime below the given integer (unsigned 64 bit)",
     version
 )]
-
 struct Cli {
     /// Number to search below
     number: u64,
