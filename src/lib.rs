@@ -8,7 +8,7 @@ pub fn largest_prime_below(n: u64) -> Option<u64> {
     let mut candidate = n - 1;
 
     // Ensure we start on an odd number, unless candidate is exactly 2.
-    if candidate > 2 && candidate % 2 == 0 {
+    if candidate > 2 && candidate.is_multiple_of(2) {
         candidate -= 1;
     }
 
@@ -44,7 +44,7 @@ fn is_prime(n: u64) -> bool {
         if n == p {
             return true;
         }
-        if n % p == 0 {
+        if n.is_multiple_of(p) {
             return n == p;
         }
     }
@@ -52,7 +52,7 @@ fn is_prime(n: u64) -> bool {
     // Write n − 1 as d * 2^s with d odd.
     let mut d = n - 1;
     let mut s = 0_u32;
-    while d % 2 == 0 {
+    while d.is_multiple_of(2) {
         d >>= 1;
         s += 1;
     }
