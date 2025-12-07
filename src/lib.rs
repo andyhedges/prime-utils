@@ -109,3 +109,69 @@ fn mod_pow(mut base: u64, mut exp: u64, modu: u64) -> u64 {
 
     result
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn is_prime_small_primes() {
+        let primes = [2_u64, 3, 5, 7, 11, 13, 17, 19, 23, 29];
+        for &p in &primes {
+            assert!(is_prime(p), "expected {p} to be prime");
+        }
+    }
+
+    #[test]
+    // technically 1 isn't composite or prime, but hey ho
+    fn is_prime_small_composites() {
+        let composites = [0_u64, 1, 4, 6, 8, 9, 10, 12, 15, 21, 25, 100];
+        for &c in &composites {
+            assert!(!is_prime(c), "expected {c} to be composite");
+        }
+    }
+
+    #[test]
+    fn is_prime_large_known_values() {
+        // Some larger values to exercise Miller–Rabin paths.
+        assert!(is_prime(1_000_000_007));
+        assert!(!is_prime(1_000_000_008));
+        assert!(is_prime(4_294_967_291)); // near 2^32
+    }
+
+    #[test]
+    fn largest_prime_below_basic_cases() {
+        assert_eq!(largest_prime_below(3), Some(2));
+        assert_eq!(largest_prime_below(4), Some(3));
+        assert_eq!(largest_prime_below(10), Some(7));
+        assert_eq!(largest_prime_below(11), Some(7));
+        assert_eq!(largest_prime_below(12), Some(11));
+    }
+
+    #[test]
+    fn largest_prime_below_no_prime() {
+        assert_eq!(largest_prime_below(0), None);
+        assert_eq!(largest_prime_below(1), None);
+        assert_eq!(largest_prime_below(2), None);
+    }
+
+    #[test]
+    fn largest_prime_below_even_and_odd_inputs() {
+        // Even input
+        assert_eq!(largest_prime_below(100), Some(97));
+        // Odd input that is prime itself
+        assert_eq!(largest_prime_below(101), Some(97));
+        // Odd input that is composite
+        assert_eq!(largest_prime_below(1001), Some(997));
+    }
+
+    #[test]
+    fn largest_prime_below_large() {
+        // Not astronomic, but large enough to stress test a bit.
+        // 1_000_000_007 is prime, so the largest prime below 1_000_000_010 is 1_000_000_007.
+        assert_eq!(
+            largest_prime_below(1_000_000_010),
+            Some(1_000_000_009)
+        );
+    }
+}
