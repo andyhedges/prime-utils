@@ -14,13 +14,13 @@ cargo install --path .
 ### From GitHub
 
 ```bash
-cargo install --git https://github.com/<your-username>/prime-utils
+cargo install --git https://github.com/andyhedges/prime-utils
 ```
 
 To install a specific binary:
 
 ```bash
-cargo install --git https://github.com/<your-username>/prime-utils --bin largest-prime-below
+cargo install --git https://github.com/andyhedges/prime-utils --bin largest-prime-below
 ```
 
 ## Usage
