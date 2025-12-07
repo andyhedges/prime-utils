@@ -1,0 +1,6 @@
+[package]
+name = "largest-prime-below"   # this becomes the binary name
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
