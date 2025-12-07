@@ -53,11 +53,3 @@ let p = largest_prime_below(100);
 println!("{}", p);
 ```
 
-## Project structure
-
-```
-src/
-  lib.rs
-  bin/
-    largest_prime_below.rs
-```
